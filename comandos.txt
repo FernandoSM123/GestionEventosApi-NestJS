@@ -1,0 +1,20 @@
+
+REQUIERE PRIMERO INSTALAR
+npm install ts-node --save-dev
+
+INSTALAR FAKER (GENERAR DATOS RANDOM)
+npm install @faker-js/faker
+
+GENERAR MIGRACIONES
+npx ts-node ./node_modules/typeorm/cli.js migration:generate -d ./data-source.ts ./src/migrations/InitialMigration
+
+CORRER MIGRACIONES
+npx ts-node ./node_modules/typeorm/cli.js migration:run -d ./data-source.ts
+
+CORRER SEEDERS
+ts-node -r tsconfig-paths/register src/seeders/runSeeders.ts
+
+ALIAS DE COMANDOS
+npm run migration:generate
+npm run migration:run
+npm run seed:run
