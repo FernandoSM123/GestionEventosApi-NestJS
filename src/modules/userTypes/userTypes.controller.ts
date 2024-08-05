@@ -14,7 +14,7 @@ import { UserTypesService } from './userTypes.service';
 import { CreateUserTypeDto } from './dto/create-userType.dto';
 import { UpdateUserTypeDto } from './dto/update-userType.dto';
 
-@Controller('user-type')
+@Controller('userTypes')
 export class UserTypesController {
   constructor(private readonly userTypesService: UserTypesService) {}
 

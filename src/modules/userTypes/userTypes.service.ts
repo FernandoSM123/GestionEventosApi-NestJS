@@ -16,23 +16,23 @@ export class UserTypesService {
     private userTypeRepository: Repository<UserType>,
   ) {}
 
-  // Crear un nuevo TipoUsuario
+  // CREAR UN NUEVO TIPO DE USUARIO
   async create(createUserTypeDto: CreateUserTypeDto): Promise<UserType> {
     const userType = this.userTypeRepository.create(createUserTypeDto);
     return this.userTypeRepository.save(userType);
   }
 
-  // Obtener todos los TiposUsuario
+  // OBTENER TODOS LOS TIPOS DE USUARIO
   async findAll(): Promise<UserType[]> {
     return this.userTypeRepository.find();
   }
 
-  // Obtener un TipoUsuario por id
+  // OBTENER UN TIPO DE USUARIO POR ID
   async findOne(id: number): Promise<UserType> {
     return this.userTypeRepository.findOneBy({ id });
   }
 
-  // Actualizar un TipoUsuario por id
+  // ACTUALIZAR UN TIPO DE USUARIO POR ID
   async update(
     id: number,
     updateUserTypeDto: UpdateUserTypeDto,
@@ -41,7 +41,7 @@ export class UserTypesService {
     return this.findOne(id);
   }
 
-  // Eliminar un TipoUsuario por id
+  // ELIMINAR UN TIPO DE USUARIO POR ID
   async remove(id: number): Promise<void> {
     await this.userTypeRepository.delete(id);
   }

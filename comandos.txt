@@ -5,6 +5,13 @@ npm install ts-node --save-dev
 INSTALAR FAKER (GENERAR DATOS RANDOM)
 npm install @faker-js/faker
 
+PARA ENCRIPTAR CONTRASENAS
+npm install bcrypt
+npm install @types/bcrypt --save-dev
+
+//INSTALAR NODEMON (REFRESCAR CAMBIOS EN LA APP EJECUTANDOSE)
+npm install --save-dev nodemon
+
 GENERAR MIGRACIONES
 npx ts-node ./node_modules/typeorm/cli.js migration:generate -d ./data-source.ts ./src/migrations/InitialMigration
 

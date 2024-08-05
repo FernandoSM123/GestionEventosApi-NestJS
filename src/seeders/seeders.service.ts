@@ -5,6 +5,7 @@ import { faker } from '@faker-js/faker';
 
 import { UserType } from '../modules/userTypes/entities/userType.entity';
 import { User } from '../modules/users/entities/user.entity';
+import { CreateUserTypeDto } from 'src/modules/userTypes/dto/create-userType.dto';
 
 @Injectable()
 export class SeedersService {
@@ -39,6 +40,7 @@ export class SeedersService {
   }
 
   //CREAR USUARIOS
+  //CREAR USUARIOS
   private async createUsers() {
     const userTypes = await this.userTypeRepository.find();
 
@@ -46,12 +48,29 @@ export class SeedersService {
 
     for (let i = 0; i < 50; i++) {
       const user = new User();
-      user.username = faker.person.firstName();
-      user.lastname = faker.person.lastName();
-      user.cellphone = faker.phone.number();
-      user.email = faker.internet.email();
-      user.password = faker.internet.password();
-      user.userTypeId = userTypes[Math.floor(Math.random() * userTypes.length)];
+
+      if (i === 0) {
+        user.username = 'John';
+        user.lastname = 'Doe';
+        user.cellphone = '1234567890';
+        user.email = 'john.doe@example.com';
+        user.password = '123';
+        user.userType = userTypes[0];
+      } else if (i === 1) {
+        user.username = 'Jane';
+        user.lastname = 'Doe';
+        user.cellphone = '1234567890';
+        user.email = 'jane.doe@example.com';
+        user.password = '123';
+        user.userType = userTypes[1];
+      } else {
+        user.username = faker.person.firstName();
+        user.lastname = faker.person.lastName();
+        user.cellphone = faker.phone.number();
+        user.email = faker.internet.email();
+        user.password = faker.internet.password();
+        user.userType = userTypes[Math.floor(Math.random() * userTypes.length)];
+      }
 
       users.push(user);
     }
