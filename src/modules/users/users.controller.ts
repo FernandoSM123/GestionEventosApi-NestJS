@@ -8,15 +8,23 @@ import {
   Delete,
   ParseIntPipe,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
+  //RUTA TEST
+  @Get('test')
+  test(@Query('num', ParseIntPipe) num: number) {
+    return `Number is ${num}`;
+  }
 
   //OBTENER USUARIOS CON PAGINACION
   @Get('paginate')
@@ -37,11 +45,6 @@ export class UsersController {
     );
   }
 
-  @Get('test')
-  test(@Query('num', ParseIntPipe) num: number) {
-    return `Number is ${num}`;
-  }
-
   // CREAR UN NUEVO USUARIO
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
@@ -49,6 +52,7 @@ export class UsersController {
   }
 
   // OBTENER TODOS LOS USUARIOS
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(): Promise<User[]> {
     return await this.usersService.findAll();

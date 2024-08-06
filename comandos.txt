@@ -9,8 +9,19 @@ PARA ENCRIPTAR CONTRASENAS
 npm install bcrypt
 npm install @types/bcrypt --save-dev
 
-//INSTALAR NODEMON (REFRESCAR CAMBIOS EN LA APP EJECUTANDOSE)
+INSTALAR NODEMON (REFRESCAR CAMBIOS EN LA APP EJECUTANDOSE)
 npm install --save-dev nodemon
+
+INSTALAR DEPENDENCIAS DE JWT
+npm install @nestjs/jwt @nestjs/passport passport passport-jwt bcryptjs
+npm install --save-dev @types/passport-jwt @types/bcryptjs
+
+INSTALAR PASSPORT LOCAL
+npm install passport-local
+npm install --save-dev @types/passport-local
+
+INSTALAR EXPRESS SESSION
+npm install express-session
 
 GENERAR MIGRACIONES
 npx ts-node ./node_modules/typeorm/cli.js migration:generate -d ./data-source.ts ./src/migrations/InitialMigration

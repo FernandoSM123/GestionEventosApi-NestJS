@@ -27,19 +27,18 @@ export class SeedersService {
       {
         name: 'Administrator',
         description:
-          'A user who has read-only access to the system. They can view content and data but do not have permission to make changes or modifications',
+          'A user with full access to the system, including the ability to view, create, modify, and delete content and manage other users. Administrators have the highest level of permissions and control over system settings and configurations',
       },
       {
         name: 'Viewer',
         description:
-          'A user with full access to the system, including the ability to view, create, modify, and delete content and manage other users. Administrators have the highest level of permissions and control over system settings and configurations',
+          'A user who has read-only access to the system. They can view content and data but do not have permission to make changes or modifications',
       },
     ];
 
     await this.userTypeRepository.save(userTypes);
   }
 
-  //CREAR USUARIOS
   //CREAR USUARIOS
   private async createUsers() {
     const userTypes = await this.userTypeRepository.find();

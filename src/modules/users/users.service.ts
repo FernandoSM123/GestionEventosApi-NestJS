@@ -19,6 +19,14 @@ export class UsersService {
     private readonly userTypeRepository: Repository<UserType>,
   ) {}
 
+  //BUSCA USUARIO POR CORREO
+  async findByEmail(email: string): Promise<User | undefined> {
+    return this.userRepository.findOne({
+      where: { email },
+      relations: ['userType'],
+    });
+  }
+
   // CREAR UN NUEVO USUARIO
   async create(createUserDto: CreateUserDto): Promise<User> {
     // Encuentra el UserType basado en el ID proporcionado
